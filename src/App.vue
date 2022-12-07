@@ -19,6 +19,7 @@
 							<PokemonInfos></PokemonInfos>
 
 							<!-- FORM ? -->
+							<TheForm></TheForm>
 
 						</div>
 
@@ -47,10 +48,11 @@ import NavBottom from './components/NavBottom.vue';
 import NavTop from './components/NavTop.vue';
 import PokemonInfos from './components/PokemonInfos.vue';
 import PokemonList from './components/PokemonList.vue';
+import TheForm from './components/TheForm.vue';
 
 
 export default {
-	components: { NavTop, NavBottom, PokemonList, PokemonInfos },
+	components: { NavTop, NavBottom, PokemonList, PokemonInfos, TheForm },
 	data() {
 		return {
 
@@ -63,7 +65,7 @@ export default {
 @use "./styles/general.scss";
 @use "./styles/partials/variables" as *;
 
-body{
+body {
 	font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -71,44 +73,46 @@ body{
 	background: $bg_primary_color;
 
 }
+
 #right-container {
 
 	background: $bg_primary_color;
 	width: 50%;
 }
 
-.col-11{
+.col-11 {
 	box-shadow: 0px 0px 5px 10px inset $bg_primary_color_dark ;
 
 }
 
 
-#right-container{
+#right-container {
 	box-shadow: 0px 0px 2px 5px inset $bg_primary_color_dark ;
-	background: rgb(209,12,118);
-background: linear-gradient(270deg, rgba(209,12,118,1) 0%, rgba(233,38,144,1) 2%, rgba(213,105,164,1) 23%, rgba(233,38,144,1) 89%, rgba(233,38,144,1) 96%, rgba(182,17,106,1) 100%);
+	background: rgb(209, 12, 118);
+	background: linear-gradient(270deg, rgba(209, 12, 118, 1) 0%, rgba(233, 38, 144, 1) 2%, rgba(213, 105, 164, 1) 23%, rgba(233, 38, 144, 1) 89%, rgba(233, 38, 144, 1) 96%, rgba(182, 17, 106, 1) 100%);
 
 }
-#left-container{
+
+#left-container {
 	box-shadow: 0px 0px 2px 3px inset $bg_primary_color_dark ;
 
-	background: rgb(209,12,118);
-background: linear-gradient(130deg, rgba(209,12,118,1) 0%, rgba(233,38,144,1) 2%, rgba(213,105,164,1) 23%, rgba(233,38,144,1) 89%, rgba(233,38,144,1) 96%, rgba(182,17,106,1) 100%);
+	background: rgb(209, 12, 118);
+	background: linear-gradient(130deg, rgba(209, 12, 118, 1) 0%, rgba(233, 38, 144, 1) 2%, rgba(213, 105, 164, 1) 23%, rgba(233, 38, 144, 1) 89%, rgba(233, 38, 144, 1) 96%, rgba(182, 17, 106, 1) 100%);
 }
 
-#left-main-container{
-border-right:10px double rgba(209,12,118,1) ;
+#left-main-container {
+	border-right: 10px double rgba(209, 12, 118, 1);
 }
 
-.separator{
+.separator {
 	width: 30px;
 	height: 100%;
-	background: rgb(209,12,118);
-background: linear-gradient(90deg, rgba(209,12,118,1) 0%, rgba(233,38,144,1) 11%, rgba(213,105,164,1) 21%, rgba(233,38,144,1) 34%, rgba(233,38,144,1) 71%, rgba(182,17,106,1) 100%);
+	background: rgb(209, 12, 118);
+	background: linear-gradient(90deg, rgba(209, 12, 118, 1) 0%, rgba(233, 38, 144, 1) 11%, rgba(213, 105, 164, 1) 21%, rgba(233, 38, 144, 1) 34%, rgba(233, 38, 144, 1) 71%, rgba(182, 17, 106, 1) 100%);
 }
 
 
 #main-container {
-	margin: 150px 0;
+	margin: 120px 0;
 }
 </style>

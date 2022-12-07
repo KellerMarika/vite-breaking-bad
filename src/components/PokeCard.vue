@@ -3,7 +3,7 @@
   <div class="poke-card w-100 d-flex adivgn-items-center  text-center ps-2">
   <!--   v-for="(typesList) in pokemon.types"
   :class="typesList.type.name" -->
-    <div class="card-infos flex-fill pt-4 mx-3 h-100">
+    <div class="card-infos flex-fill pt-2 mx-3 h-100">
       <div class="info d-flex align-items-lg-baseline">
         <div class="number fs-1 fw-light">{{ `#${this.addZero(pokemon.id)}` }}</div>
         <h2 class="name flex-fill text-capitalize fw-bold">{{ pokemon.name }}</h2>
@@ -25,7 +25,7 @@
     </div>
 
     <div class="img-card-container">
-      <img class="img-fluid w-75" :src="pokemon.sprites.other['official-artwork'].front_default" :alt="pokemon.name">
+      <img class="img-fluid" :src="pokemon.sprites.other['official-artwork'].front_default" :alt="pokemon.name">
     </div>
 
   </div>
@@ -84,7 +84,7 @@ export default {
 
 <style scoped lang="scss">
 .poke-card {
-  height: 200px;
+  height: 150px;
   border-bottom: 1px solid grey;
   box-shadow: 0px 1px 5px 1px grey;
 
@@ -96,11 +96,15 @@ export default {
 
   .img-card-container {
     height: 100%;
-    width: 250px;
+    width: 220px;
     border-top-left-radius: 95px;
     border-bottom-left-radius: 95px;
     border-bottom: 1px solid grey;
-    background-color: rgb(245, 245, 238);
+    background-color: rgba(255, 255, 255, 0.781);
+
+    img{
+      width:65%;
+    }
   }
 }
 ;

@@ -22,8 +22,8 @@
 
  #pokemon-infos {
 	margin-top: 50px;
-	width: 70%;
-	aspect-ratio: 16/9;
+	width: 60%;
+	aspect-ratio: 20/8;
 	left: 50%;
 	transform: translateX(-50%);
 
