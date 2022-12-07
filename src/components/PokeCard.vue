@@ -1,7 +1,8 @@
 <template>
 
   <div class="poke-card w-100 d-flex adivgn-items-center  text-center ps-2">
-
+  <!--   v-for="(typesList) in pokemon.types"
+  :class="typesList.type.name" -->
     <div class="card-infos flex-fill pt-4 mx-3 h-100">
       <div class="info d-flex align-items-lg-baseline">
         <div class="number fs-1 fw-light">{{ `#${this.addZero(pokemon.id)}` }}</div>
