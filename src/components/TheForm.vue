@@ -13,11 +13,13 @@
 
           <label class="col thumb d-flex position-relative rounded-2 d-flex justify-content-center align-items-center"
               v-for="(type) in this.store.pokemonsTypesList"
-              :for="type">{{ type }}
+              :for="type">
+              <img :src="`/${type}.png`" :alt="type" class="img-fluid">
+
             <input class="position-absolute opacity-0" type="radio" id="type" :name="filterType" :value="type">
 
           </label>
-          <button class="flex-fill rounded-2"> Submit</button>
+          <button class="get-type-btn flex-fill rounded-2 fw-bold" type="button"> Submit</button>
         </div>
 
       </div>
@@ -54,7 +56,8 @@ form {
       aspect-ratio: 1/1;
 
       &,
-      &+button {
+      &+ .get-type-btn {
+        color: #184491 ;
         border: 2px outset rgba(11, 76, 138, 0.808);
         background-color: rgb(87, 143, 228);
         box-shadow: -5px -2px 5px 1px inset  rgb(87, 114, 231);
