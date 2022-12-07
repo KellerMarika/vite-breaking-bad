@@ -9,12 +9,12 @@
 				<div class="col-11 d-flex h-100 position-relative">
 
 					<!-- LEFTCONTAINER -->
-					<div id="left-container" class="flex-fill d-flex flex-column">
+					<div id="left-container" class="flex-fill d-flex flex-column overflow-hidden">
 
 						<NavTop></NavTop>
 
 						<!-- MAIN pokemon -->
-						<div id="left-main-container" class="flex-fill overflow-auto">
+						<div id="left-main-container" class="flex-fill">
 
 							<PokemonInfos></PokemonInfos>
 
