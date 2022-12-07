@@ -5,8 +5,8 @@
     <div class="card-infos flex-fill pt-4 mx-3 h-100">
       <div class="info d-flex align-items-lg-baseline">
         <div class="number fs-1 fw-light">{{ `#${this.addZero(pokemon.id)}` }}</div>
-        <h2 class="name flex-fill text-capitalize fw-bold">{{pokemon.name}}</h2>
-
+        <h2 class="name flex-fill text-capitalize fw-bold">{{ pokemon.name }}</h2>
+    <!--     <div>{{`${this.fetchPokemonImg(pokemon.sprites.other.official-artwork.front_default)}`}}</div> --> 
 
         <i class="fs-2 m-2 fa-regular fa-star"></i>
         <i class="fs-2 m-2 fa-solid fa-star d-none"></i>
@@ -18,13 +18,13 @@
 
       <div class="type row gap-3 mx-3 mt-4 justify-content-between ">
         <div class="col text-uppercase rounded-3 fs-3"
-        v-for="(type) in pokemon.types">{{type.type.name}}</div>
+            v-for="(typesList) in pokemon.types">{{ typesList.type.name }}</div>
 
       </div>
     </div>
 
     <div class="img-card-container">
-      <img src="#" alt="pokeimg">
+      <img class="img-fluid w-75" :src="pokemon.sprites.other['official-artwork'].front_default" :alt="pokemon.name">
     </div>
 
   </div>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { store } from "../store/store"
+import { store} from "../store/store"
 
 export default {
   props: {
@@ -78,7 +78,6 @@ export default {
   },
   mounted() {
   }
-
 };
 </script>
 
@@ -101,17 +100,7 @@ export default {
     border-bottom-left-radius: 95px;
     border-bottom: 1px solid grey;
     background-color: rgb(245, 245, 238);
-
-    img {
-      width: 100%;
-      height: 100%;
-    }
   }
-
-  /*  & * {
-    border: 1px solid red;
-  }  */
 }
-
 ;
 </style>
