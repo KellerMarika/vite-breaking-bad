@@ -3,22 +3,22 @@
   <div class="poke-card w-100 d-flex adivgn-items-center  text-center ps-2">
   <!--   v-for="(typesList) in pokemon.types"
   :class="typesList.type.name" -->
-    <div class="card-infos flex-fill pt-2 mx-3 h-100">
+    <div class="card-infos flex-fill pt-3 mx-3 h-100">
       <div class="info d-flex align-items-lg-baseline">
-        <div class="number fs-1 fw-light">{{ `#${this.addZero(pokemon.id)}` }}</div>
+        <div class="number fs-2 fw-light">{{ `#${this.addZero(pokemon.id)}` }}</div>
         <h2 class="name flex-fill text-capitalize fw-bold">{{ pokemon.name }}</h2>
     <!--     <div>{{`${this.fetchPokemonImg(pokemon.sprites.other.official-artwork.front_default)}`}}</div> --> 
 
-        <i class="fs-2 m-2 fa-regular fa-star"></i>
-        <i class="fs-2 m-2 fa-solid fa-star d-none"></i>
+        <i class="fs-3 m-2 fa-regular fa-star"></i>
+        <i class="fs-3 m-2 fa-solid fa-star d-none"></i>
 
-        <i class="fs-2 m-2 fa-regular fa-circle"></i>
-        <i class="fs-2 m-2 fa-regular fa-circle-check d-none"></i>
+        <i class="fs-3 m-2 fa-regular fa-circle"></i>
+        <i class="fs-3 m-2 fa-regular fa-circle-check d-none"></i>
 
       </div>
 
       <div class="type row gap-3 mx-3 mt-4 justify-content-between ">
-        <div class="col text-uppercase rounded-3 fs-3"
+        <div class="col text-uppercase rounded-3 fs-4"
             v-for="(typesList) in pokemon.types">{{ typesList.type.name }}</div>
 
       </div>
