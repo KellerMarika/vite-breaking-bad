@@ -34,3 +34,7 @@ bonus:
 12)mi piacerebbe scoprire se nell'api è presente un file audio del verso del pokemon
 13)mi piacerebbe mostrare le evoluzioni
 14)mi piacerebbe mostrare le zone in cui trovarli
+
+15)vorrei trovare la vocina per far leggere la descrizione del pokemon al computer <3
+
+e una fetta di culo grazie
