@@ -4,8 +4,8 @@
 
     <div class="card-infos flex-fill pt-4 mx-3 h-100">
       <div class="info d-flex align-items-lg-baseline">
-        <div class="number fs-1 fw-light">#001</div>
-        <h2 class="name flex-fill text-capitalize fw-bold">bulbassaur</h2>
+        <div class="number fs-1 fw-light">{{ `#${this.addZero(pokemon.id)}` }}</div>
+        <h2 class="name flex-fill text-capitalize fw-bold">{{pokemon.name}}</h2>
 
 
         <i class="fs-2 m-2 fa-regular fa-star"></i>
@@ -16,8 +16,9 @@
 
       </div>
 
-      <div class="type row mx-5 mt-4 gap-1 justify-content-between">
-        <div class="col text-uppercase rounded-3 fs-3  ">tipo</div>
+      <div class="type row gap-3 mx-3 mt-4 justify-content-between ">
+        <div class="col text-uppercase rounded-3 fs-3"
+        v-for="(type) in pokemon.types">{{type.type.name}}</div>
 
       </div>
     </div>
@@ -31,14 +32,12 @@
 </template>
 
 <script>
-import { formToJSON } from "axios";
-import { onRenderTracked } from "vue";
 import { store } from "../store/store"
+
 export default {
   props: {
     /**
      * parametri dell'oggetto pokemon
-     *
      * @param {number} id
      * @param {string} name
      * @param {array} types
@@ -57,26 +56,8 @@ export default {
      * @param {number} order
      * @param {array} held-items
      * @param {array} past_types
-     * 
      * oggetto che rappresenta un singolo pokemon:
      */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     pokemon: {
       //specifico che tipologia è la prop che passo e se è essenziale (controllo in console)
       type: Object,
@@ -87,7 +68,17 @@ export default {
     return {
       store,
     };
+  },
+  methods: {
+
+    /* FUNZIONE FORMATA NUMERI A 3 CIFRE (001|010|100) */
+    addZero(n) {
+      return (n < 10 ? '00' : n < 100 ? '0' : '') + n;
+    }
+  },
+  mounted() {
   }
+
 };
 </script>
 

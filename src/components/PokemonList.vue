@@ -4,8 +4,9 @@
 
     <!-- ciiclo sull'array pokedex e passo le prop -->
     <li class="poke-card-container text-center"
-    v-for="(pokemon,index) in this.store.pokedex">
-      <PokeCard :pokemon="pokemon" :index="index"></PokeCard>
+        v-for="(pokemon, index) in this.store.pokedex">
+      <PokeCard :pokemon="pokemon" :index="index" :key="( pokemon.name+index)"></PokeCard>
+
     </li>
 
   </ul>
@@ -21,7 +22,7 @@ export default {
 
   components: { PokeCard },
   props: {
-    
+
   },
   data() {
     return {
@@ -32,8 +33,8 @@ export default {
     fetchPokemonsList()
 
   },
-  mounted(){
-   
+  mounted() {
+
   }
 };
 </script>

@@ -24,7 +24,7 @@ export function fetchPokemonsList() {
         axios.get(pokemon.url)
           .then((resp) => {
             //console.log("resp.data: ", resp.data)
-            store.pokedex=resp.data
+            store.pokedex.push(resp.data)
             //console.log(store.pokedex)
           });
       });
