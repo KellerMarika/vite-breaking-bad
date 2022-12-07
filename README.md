@@ -9,3 +9,28 @@ SE l’api non funziona, potete usare quella di rick & Morty
 https://rickandmortyapi.com/api/character
 Bonus:
 Creare un componente loader da visualizzare fintantoché i risultati non sono pronti.
+
+css
+1)ridimensionare le card
+2)è un pò rosa... doveva essere rosso
+
+POKEMONS LIST:
+3)recuperare da figlio card a padre list il type di ogni pokemon e assegnarlo come classe.
+4)creare delle class-type (per ogni tipo) asssegnando un bg-color linear grandient es: .veleno{ bgcolorlineargradient=$coloreveleno-dark/$coloreveleno-light}
+5)fare in modo che le card con 2 class-type abbiano un bg-color linear grandient misto es: .erba.veleno{bgcolorlineargradient=$coloreerba/$coloreveleno}
+
+6)vorrrei setActiveCard by @scroll all'interno del contenitore _______________how?
+
+POKEMONINFO:
+7)mostrare la current active card nel component PokemonInfos.
+8)creare dei pulsanti a lato del pokemonInfos per permettere di mostrare diverse schermate informative relative al current active card
+
+FORM
+9)creare diversi tipi di pulsanti nel form per creare i filtri
+10)quando clicco su un qualsiasi pusante del filtro active card diventa -1 e nascondo i contenuto di Pokemon infos 
+11)creo un altro componente che mostra i parametri della ricerca all'interno dello stesso contenitore del pokemoninfos in tempo reale (come se l'utente digitasse sulla tastiera e scrivesse nel monitor)
+
+bonus:
+12)mi piacerebbe scoprire se nell'api è presente un file audio del verso del pokemon
+13)mi piacerebbe mostrare le evoluzioni
+14)mi piacerebbe mostrare le zone in cui trovarli
