@@ -1,9 +1,10 @@
 <template>
+
   <label
-      class="search-btn  rounded-2 fw-bold d-block position-relative d-flex justify-content-center align-items-center"
+      class="name search-btn fw-bold d-block position-relative d-flex justify-content-center align-items-center text-uppercase"
       for="Name"
       :class="isActive ? 'active' : ''"
-      @click="isActive ? isActive = false : isActive = true"> search by name
+      @click="isActive ? isActive = false : isActive = true"> name
 
     <input class="position-absolute start-0 opacity-0 " type="text" v-model="store.filters.name">
   </label>
@@ -27,7 +28,7 @@ export default {
 
 <style scoped lang="scss">
 .search-btn {
-  height: 50%;
+
   color: #184491;
   border: 2px outset rgba(11, 76, 138, 0.808);
   background-color: rgb(87, 143, 228);

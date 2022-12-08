@@ -9,7 +9,7 @@
 				<div class="col-11 d-flex h-100 position-relative">
 
 					<!-- LEFTCONTAINER -->
-					<div id="left-container" class="flex-fill d-flex flex-column overflow-hidden">
+					<div id="left-container" class="flex-fill d-flex flex-column "><!-- _________________________ -->
 
 						<NavTop></NavTop>
 
@@ -89,7 +89,6 @@ width: calc(50% - 15px);
 	box-shadow: 0px 0px 5px 10px inset $bg_primary_color_dark ;
 
 }
-
 
 #right-container {
 	box-shadow: 0px 0px 2px 5px inset $bg_primary_color_dark ;
