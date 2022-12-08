@@ -1,7 +1,7 @@
 <template>
 
   <label
-      class="name search-btn fw-bold d-block position-relative d-flex justify-content-center align-items-center text-uppercase"
+      class="fw-bold d-block position-relative d-flex justify-content-center align-items-center text-uppercase"
       for="Name"
       :class="isActive ? 'active' : ''"
       @click="isActive ? isActive = false : isActive = true"> name
@@ -27,29 +27,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.search-btn {
 
-  color: #184491;
-  border: 2px outset rgba(11, 76, 138, 0.808);
-  background-color: rgb(87, 143, 228);
-  box-shadow: -5px -2px 5px 1px inset rgb(87, 114, 231);
-
-  &:hover {
-      border-width: 3px 3px 3px 3px;
-      border-style: inset;
-
-      box-shadow: -5px -2px 5px 1px inset rgb(87, 114, 231);
-      background-color: rgb(81, 135, 216);
-    }
-
-    &.active {
-      color: rgb(210, 255, 138);
-    }
-
-    & input {
-      width: 100%;
-      height: 100%;
-    }
-
-  }
 </style>
