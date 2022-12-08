@@ -39,7 +39,7 @@ export function fetchPokemonsList() {
             resp.data.types.forEach(type => {
               if (!store.pokemonsTypesList.includes(type.type.name)) {
                 store.pokemonsTypesList.push(type.type.name)
-                console.log(store.pokemonsTypesList)
+                //console.log(store.pokemonsTypesList)
               }
             })
 
