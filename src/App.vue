@@ -16,7 +16,12 @@
 						<!-- MAIN pokemon -->
 						<div id="left-main-container" class="flex-fill">
 
-							<PokemonInfos></PokemonInfos>
+
+							<LeftMonitorInfos>
+								<!--ShowFilterOptions -->
+								<!-- PokemonInfos -->
+
+							</LeftMonitorInfos>
 
 							<!-- FORM ? -->
 							<TheForm></TheForm>
@@ -46,13 +51,13 @@
 <script>
 import NavBottom from './components/NavBottom.vue';
 import NavTop from './components/NavTop.vue';
-import PokemonInfos from './components/PokemonInfos.vue';
+import LeftMonitorInfos from './components/LeftMonitorInfos.vue';
 import PokemonList from './components/PokemonList.vue';
 import TheForm from './components/TheForm.vue';
 
 
 export default {
-	components: { NavTop, NavBottom, PokemonList, PokemonInfos, TheForm },
+	components: { NavTop, NavBottom, PokemonList, LeftMonitorInfos, TheForm },
 	data() {
 		return {
 
@@ -71,13 +76,13 @@ body {
 
 #left-container {
 	background: $bg_primary_color;
-
+width: calc(50% - 15px);
 }
 
 #right-container {
 
 	background: $bg_primary_color;
-	width: 50%;
+	width: calc(50% - 15px);
 }
 
 .col-11 {

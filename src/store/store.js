@@ -4,7 +4,16 @@ import axios from "axios";
 export const store = reactive({
   pokemonsList: [],
   pokedex: [],
-  pokemonsTypesList: [],
+  pokemonsTypesList: [
+    "dark",
+  ],
+
+  //oggetto del filtro
+  filters: {
+    name: "",
+    id: "",
+    types: [ ],
+  }
 });
 
 /* FUNZIONE POPOLA POKEDEX (LISTA POKEMON) */
@@ -25,12 +34,12 @@ export function fetchPokemonsList() {
           .then((resp) => {
             //console.log("resp.data: ", resp.data)
 
-            /* CICLO COLLEZIONA TIPO */
 
+            /* CICLO COLLEZIONA TIPO */
             resp.data.types.forEach(type => {
               if (!store.pokemonsTypesList.includes(type.type.name)) {
                 store.pokemonsTypesList.push(type.type.name)
-                //console.log(store.pokemonsTypesList)
+                console.log(store.pokemonsTypesList)
               }
             })
 
@@ -44,22 +53,6 @@ export function fetchPokemonsList() {
     });
 };
 
-/* FUNZIONE FILTRO */
-/* 
-export function getTypesList() {
-  const typesList = [];
-
-  store.pokedex.forEach(pokemon => {
-    // se la categoria dell'pokemono attuale NON è già inclusa nell'array 
-    // typesList, allora la pusho.
-    if (!typesList.includes(pokemon.category)) {
-      typesList.push(pokemon.category);
-    }
-  });
- */
-/*   return typesList;
-}
- */
 
 
 

@@ -11,7 +11,6 @@ Bonus:
 Creare un componente loader da visualizzare fintantoché i risultati non sono pronti.
 
 css
-1)ridimensionare le card
 2)è un pò rosa... doveva essere rosso
 
 POKEMONS LIST:

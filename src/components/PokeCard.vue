@@ -1,24 +1,24 @@
 <template>
 
-  <div class="poke-card w-100 d-flex adivgn-items-center  text-center ps-2">
+  <div class="poke-card w-100 d-flex align-items-center  text-center ps-2">
   <!--   v-for="(typesList) in pokemon.types"
   :class="typesList.type.name" -->
     <div class="card-infos flex-fill pt-3 mx-3 h-100">
       <div class="info d-flex align-items-lg-baseline">
-        <div class="number fs-2 fw-light">{{ `#${this.addZero(pokemon.id)}` }}</div>
-        <h2 class="name flex-fill text-capitalize fw-bold">{{ pokemon.name }}</h2>
+        <div class="number fs-3 fw-light">{{ `#${this.addZero(pokemon.id)}` }}</div>
+        <h3 class="name flex-fill text-capitalize fw-bold">{{ pokemon.name }}</h3>
     <!--     <div>{{`${this.fetchPokemonImg(pokemon.sprites.other.official-artwork.front_default)}`}}</div> --> 
 
-        <i class="fs-3 m-2 fa-regular fa-star"></i>
-        <i class="fs-3 m-2 fa-solid fa-star d-none"></i>
+        <i class="fs-4 m-2 fa-regular fa-star"></i>
+        <i class="fs-4 m-2 fa-solid fa-star d-none"></i>
 
-        <i class="fs-3 m-2 fa-regular fa-circle"></i>
-        <i class="fs-3 m-2 fa-regular fa-circle-check d-none"></i>
+        <i class="fs-4 m-2 fa-regular fa-circle"></i>
+        <i class="fs-4 m-2 fa-regular fa-circle-check d-none"></i>
 
       </div>
 
-      <div class="type row gap-3 mx-3 mt-4 justify-content-between ">
-        <div class="col text-uppercase rounded-3 fs-4"
+      <div class="type row gap-4 mx-5 mt-2 justify-content-between ">
+        <div class="col text-uppercase rounded-3 fs-5"
             v-for="(typesList) in pokemon.types">{{ typesList.type.name }}</div>
 
       </div>
@@ -84,7 +84,7 @@ export default {
 
 <style scoped lang="scss">
 .poke-card {
-  height: 150px;
+  height: 120px;
   border-bottom: 1px solid grey;
   box-shadow: 0px 1px 5px 1px grey;
 
@@ -96,7 +96,7 @@ export default {
 
   .img-card-container {
     height: 100%;
-    width: 220px;
+    width: 180px;
     border-top-left-radius: 95px;
     border-bottom-left-radius: 95px;
     border-bottom: 1px solid grey;
