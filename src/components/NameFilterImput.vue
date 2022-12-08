@@ -3,8 +3,8 @@
   <label
       class="fw-bold d-block position-relative d-flex justify-content-center align-items-center text-uppercase"
       for="Name"
-      :class="isActive ? 'active' : ''"
-      @click="isActive ? isActive = false : isActive = true"> name
+      :class="store.isearchByNameIsActive ? 'active' : ''"
+      @click="store.isearchByNameIsActive ? store.isearchByNameIsActive = false : store.isearchByNameIsActive = true"> name
 
     <input class="position-absolute start-0 opacity-0 " type="text" v-model="store.filters.name">
   </label>
@@ -20,7 +20,6 @@ export default {
   data() {
     return {
       store,
-      isActive: false,
     };
   }
 };

@@ -7,6 +7,8 @@ export const store = reactive({
   pokemonsTypesList: [
     "dark",
   ],
+  searchByIdIsActive:false,
+  isearchByNameIsActive:false,
 
   //oggetto del filtro
   filters: {

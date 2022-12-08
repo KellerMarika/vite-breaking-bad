@@ -3,14 +3,25 @@
 
     <h6 class="text-center fw-bold">Filter Pokemons</h6>
 
+
     <!-- types -->
+    <!-- prende le prop da store -->
     <div class="types-search d-flex flex-wrap">
 
-      <span class="fw-bold" v-show="(store.filters.types.length > 0)">
+      <span class="fw-bold pe-2" v-show="(store.filters.types.length > 0)">
         <i class="fa-solid fa-caret-right"></i>
         By Type: </span>
-      <div class="type px-1"
-          v-for="(typeChose, i) in store.filters.types">{{ typeChose }}</div>
+
+      <template v-for="(typeChose, i) in store.filters.types">
+
+        <div v-if="(i === 0)" class="type ps-1">{{ typeChose }}</div>
+        <div v-else> <span  class="type px-1">, </span>{{ typeChose }}</div>
+
+      </template>
+
+
+
+
     </div>
 
     <!-- name -->
@@ -24,7 +35,7 @@
 
     <!-- id -->
     <div class="id-search">
-      
+
       <span class="fw-bold" v-show="(store.filters.id !== '')">
         <i class="fa-solid fa-caret-right"></i>
         By id: </span>
@@ -52,7 +63,7 @@ export default {
 </script>
  
 <style scoped lang="scss">
-* {
+ * {
   border: 1px solid purple;
-}
+} 
 </style>
