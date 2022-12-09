@@ -18,12 +18,14 @@
           <TypesFilterOptions :key="type" :type="type"></TypesFilterOptions>
         </label>
 
-        <IdFilterImput class="col id search-btn thumb " v-if="(i === (this.store.pokemonsTypesList.length + 2) / 2)"></IdFilterImput>
+        <IdFilterImput class="col id search-btn thumb " v-if="(i === (this.store.pokemonsTypesList.length + 2) / 2)">
+        </IdFilterImput>
 
       </template>
 
       <button type="button"
-          class=" submit search-btn thumb col fw-bold d-block position-relative d-flex justify-content-center align-items-center text-uppercase"> Search
+          class=" submit search-btn thumb col fw-bold d-block position-relative d-flex justify-content-center align-items-center text-uppercase">
+        Search
       </button>
 
     </div>
@@ -61,16 +63,19 @@ export default {
   aspect-ratio: 1/1;
   flex-basis: calc(100% / 14);
 }
+
 .name.search-btn {
   flex-basis: calc((100% / 14) *3);
   border-radius: 10px;
   border-top-left-radius: 20px 80px;
 }
+
 .id.search-btn {
   flex-basis: calc((100% / 14) *2);
   border-radius: 10px;
   border-bottom-left-radius: 20px 80px;
 }
+
 .submit.search-btn {
   flex-basis: calc((100% / 14) *5);
   border-radius: 5px;

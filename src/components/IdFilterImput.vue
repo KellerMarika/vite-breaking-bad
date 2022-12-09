@@ -2,11 +2,11 @@
 
   <label
       class=" fw-bold d-block position-relative d-flex justify-content-center align-items-center text-uppercase"
-      for="SName"
+      for="id"
 
       :class="store.searchByIdIsActive ? 'active' : ''"
-      @click="store.searchByIdIsActive ? store.searchByIdIsActive = false : store.searchByIdIsActive = true">id
-    <input class="position-absolute start-0 opacity-0" type="number" v-model="store.filters.id">
+      @click="store.searchByIdIsActive ? (store.searchByIdIsActive = false , store.filters.id='') : store.searchByIdIsActive = true">id
+    <input class="position-absolute start-0 opacity-0" type="number" name="id" id="id" v-model="store.filters.id">
   </label>
 </template>
 

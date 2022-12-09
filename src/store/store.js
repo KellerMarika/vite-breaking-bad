@@ -8,7 +8,7 @@ export const store = reactive({
     "dark",
   ],
   searchByIdIsActive:false,
-  isearchByNameIsActive:false,
+  searchByNameIsActive:false,
 
   //oggetto del filtro
   filters: {
