@@ -1,19 +1,23 @@
 <template>
 
   <div class="poke-card w-100 d-flex align-items-center  text-center ps-2">
-  <!--   v-for="(typesList) in pokemon.types"
+    <!--   v-for="(typesList) in pokemon.types"
   :class="typesList.type.name" -->
     <div class="card-infos flex-fill pt-3 mx-3 h-100">
       <div class="info d-flex align-items-lg-baseline">
         <div class="number fs-3 fw-light">{{ `#${this.addZero(pokemon.id)}` }}</div>
         <h3 class="name flex-fill text-capitalize fw-bold">{{ pokemon.name }}</h3>
-    <!--     <div>{{`${this.fetchPokemonImg(pokemon.sprites.other.official-artwork.front_default)}`}}</div> --> 
+        <!--     <div>{{`${this.fetchPokemonImg(pokemon.sprites.other.official-artwork.front_default)}`}}</div> -->
 
-        <i class="fs-4 m-2 fa-regular fa-star"></i>
-        <i class="fs-4 m-2 fa-solid fa-star d-none"></i>
+        <i class="fs-4 m-2 fa-star" 
+            @click="isFavorite ? isFavorite = false : isFavorite = true"
+            :class="(isFavorite ? 'fa-solid' : 'fa-regular')"> </i>
 
-        <i class="fs-4 m-2 fa-regular fa-circle"></i>
-        <i class="fs-4 m-2 fa-regular fa-circle-check d-none"></i>
+
+        <i class="fs-4 m-2 fa-regular"
+            @click="isCaught ? isCaught = false : isCaught = true"
+            :class="(isCaught ? 'fa-circle-check' : 'fa-circle')"></i>
+
 
       </div>
 
@@ -33,7 +37,7 @@
 </template>
 
 <script>
-import { store} from "../store/store"
+import { store } from "../store/store"
 
 export default {
   props: {
@@ -68,6 +72,10 @@ export default {
   data() {
     return {
       store,
+      isFavorite:false,
+      isCaught: false 
+
+
     };
   },
   methods: {
@@ -75,9 +83,15 @@ export default {
     /* FUNZIONE FORMATA NUMERI A 3 CIFRE (001|010|100) */
     addZero(n) {
       return (n < 10 ? '00' : n < 100 ? '0' : '') + n;
-    }
+    },
+/*     computed: {
+      generateRandomBoolean() {
+        return Math.random() < 0.5
+      }
+    } */
   },
   mounted() {
+    
   }
 };
 </script>
@@ -102,10 +116,11 @@ export default {
     border-bottom: 1px solid grey;
     background-color: rgba(255, 255, 255, 0.781);
 
-    img{
-      width:65%;
+    img {
+      width: 65%;
     }
   }
 }
+
 ;
 </style>
