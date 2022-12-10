@@ -17,7 +17,9 @@
 						<div id="left-main-container" class="flex-fill">
 
 
-							<LeftMonitorInfos>
+							<LeftMonitorInfos
+									:toShow="monitorShow"
+									:PokemonInfosSubject="activeCard">
 								<!--ShowFilterOptions -->
 								<!-- PokemonInfos -->
 
@@ -36,7 +38,7 @@
 
 						<NavTop></NavTop>
 
-						<PokemonList></PokemonList>
+						<PokemonList @toActiveCard="setActiveCard" />
 
 						<NavBottom></NavBottom>
 
@@ -60,9 +62,20 @@ export default {
 	components: { NavTop, NavBottom, PokemonList, LeftMonitorInfos, TheForm },
 	data() {
 		return {
+			activeCard: null,
+			monitorShow: "filter"
 
 		}
-	}
+	},
+	methods: {
+		setActiveCard(clickedCard) {
+			//console.log("clicked",clickedCard)
+			this.activeCard = clickedCard
+			this.monitorShow= "info"
+
+			console.log("active", this.activeCard)
+		}
+	},
 }
 </script>
 
@@ -76,7 +89,7 @@ body {
 
 #left-container {
 	background: $bg_primary_color;
-width: calc(50% - 15px);
+	width: calc(50% - 15px);
 }
 
 #right-container {

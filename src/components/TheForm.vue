@@ -54,13 +54,13 @@ export default {
 
   methods: {
     onSearchClick() {
-
-      this.store.activeFilters = { ...this.store.filterOptions }
+      
+        this.store.activeFilters = { ...this.store.filterOptions }
 
       //se il filtro attivo contiente delle condizioni
       if (this.store.activeFilters) {
         //reset
-        this.store.pokedex=this.store.pokedexAllPokemons
+        this.store.pokedex = store.pokedexAllPokemons
         this.pokedexFiltered = []
 
         //ciclo sui pokemon del pokedex
@@ -69,10 +69,10 @@ export default {
           let checkPokemonincludedByType = false
 
           function filterByType() {
-            pokemon.types.forEach (type =>{
-              if (store.activeFilters.types.includes(type.type.name)||
-              store.activeFilters.types.length===0) {
-                //console.log("true")
+            pokemon.types.forEach(type => {
+              if (store.activeFilters.types.includes(type.type.name) ||
+                store.activeFilters.types.length === 0) {
+
                 checkPokemonincludedByType = true
               }
             });
@@ -82,15 +82,11 @@ export default {
           if (pokemon.id.toString().includes(this.store.activeFilters.id.toString()) &&
             pokemon.name.includes(this.store.activeFilters.name.toLowerCase())) {
 
-            console.log(pokemon.name, pokemon.id)
             filterByType()
 
-            console.log(checkPokemonincludedByType)
-
-            if(checkPokemonincludedByType){
-
+            if (checkPokemonincludedByType) {
               this.pokedexFiltered.push(pokemon)
-            }              
+            }
           }
 
         })

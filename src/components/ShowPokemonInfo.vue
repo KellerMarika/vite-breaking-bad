@@ -1,8 +1,41 @@
-<template></template>
+<template>
+<div>{{this.pokemonToShow.id}}</div>
+
+
+</template>
 
 <script>
-import { store, fetchPokemonsList } from "../store/store";
+import { store} from "../store/store";
 export default {
+  props: {
+    /**
+     * parametri dell'oggetto pokemon
+     * @param {number} id
+     * @param {string} name
+     * @param {array} types
+     * @param {array} species 
+     * @param {array} forms
+     * @param {array} is_default
+     * @param {string} location_area_encounters
+     * @param {array} height
+     * @param {array} weight
+     * @param {array} moves
+     * @param {array} abilities
+     * @param {array} sprites
+     * @param {array} stats 
+     * @param {number} base_experience
+     * @param {array} game-indices
+     * @param {number} order
+     * @param {array} held-items
+     * @param {array} past_types
+     * oggetto che rappresenta un singolo pokemon:
+     */
+    pokemonToShow: {
+      //specifico che tipologia è la prop che passo e se è essenziale (controllo in console)
+      type: Object,
+      required: true
+    },
+  },
   data() {
     return {
       store,

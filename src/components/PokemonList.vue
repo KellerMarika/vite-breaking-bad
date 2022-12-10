@@ -3,10 +3,16 @@
   <ul id="pokemon-list" class="flex-fill overflow-auto rounded-4 m-5 p-0">
 
     <!-- ciiclo sull'array pokedex e passo le prop -->
-    <li class="poke-card-container text-center m-2 rounded-3 overflow-hidden"
-        v-for="(pokemon, index) in this.store.pokedex">
+    <li class="poke-card-container text-center m-2 rounded-3 overflow-hidden "
+        :data-pokemon="(pokemon.name + '.' + index)"
 
-      <PokeCard :pokemon="pokemon" :index="index" :key="(pokemon.name + index)"></PokeCard>
+        v-for="(pokemon, index) in this.store.pokedex"
+
+        @click="onClick(pokemon)">
+      <!-- emit trigger evento personalizzato__________________________________________ -->
+
+
+      <PokeCard :pokemon="pokemon" :index="index" :key="(pokemon.name + '.' + index)"></PokeCard>
 
     </li>
 
@@ -22,9 +28,6 @@ import { store, fetchPokemonsList } from "../store/store";
 export default {
 
   components: { PokeCard },
-  props: {
-
-  },
   data() {
     return {
       store,
@@ -33,6 +36,13 @@ export default {
   created() {
     fetchPokemonsList()
 
+  },
+  methods: {
+    onClick(clickedPokemonCard) {
+
+      this.$emit("toActiveCard",clickedPokemonCard)
+
+    }
   },
   mounted() {
 

@@ -10,8 +10,6 @@ https://rickandmortyapi.com/api/character
 Bonus:
 Creare un componente loader da visualizzare fintantoché i risultati non sono pronti.
 
-css
-2)è un pò rosa... doveva essere rosso
 
 POKEMONS LIST:
 3)recuperare da figlio card a padre list il type di ogni pokemon e assegnarlo come classe.
@@ -37,3 +35,11 @@ bonus:
 15)vorrei trovare la vocina per far leggere la descrizione del pokemon al computer <3
 
 e una fetta di culo grazie
+
+
+to fix:
+aggiungere thumb "cancel" to reset all isactivefilters and show
+
+aggiungere cornice scavata 2 px intorno a tastiera filter con label filter
+
+aggiungere cornice scavata 2 px intorno a show in con label filter
