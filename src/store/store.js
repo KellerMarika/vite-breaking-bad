@@ -4,7 +4,6 @@ import axios from "axios";
 export const store = reactive({
   pokemonsList: [],
   pokedex: [],
-  filtredPokedex: [],
   pokemonsTypesList: [
     "dark",
   ],
@@ -16,8 +15,8 @@ export const store = reactive({
     name: "",
     id: "",
     types: [],
+    activeFilters: null,
   },
-  activeFilters: null,
 });
 
 /* funzione genera intero pokedex */
@@ -47,28 +46,9 @@ export function fetchPokemonsList() {
       });
 
     });
+  /* ____________________________________________________________ */
 
-  /* problema col then il filtro funziona, ma dopo aggiunge comunque tutte le cards e voglio morire */
-
-  if (store.activeFilters && store.pokedex.length === 151) {
-
-    store.pokedex.forEach((pokemon) => {
-      //console.log(pokemon.name, pokemon.id)
-      //pokemon.types.forEach((type) => console.log(type.type.name));
-
-      if (pokemon.id.toString().includes(store.activeFilters.id.toString()) &&
-        pokemon.name.includes(store.activeFilters.name.toLowerCase())
-        /* && pokemon.types.some(type => type.type.name === "grass") */
-      ) {
-        store.filtredPokedex.push(pokemon)
-        console.log()
-        console.log(pokemon.name, store.activeFilters.name, pokemon.id, store.activeFilters.id)
-
-      }
-
-    })
-    return store.pokedex = store.filtredPokedex
-  }
+  
 }
 
 

@@ -35,7 +35,7 @@
 </template>
   
 <script>
-import { store, fetchPokemonsList} from "../store/store";
+import { store, fetchPokemonsList } from "../store/store";
 import NameFilterImput from "./NameFilterImput.vue";
 import IdFilterImput from "./IdFilterImput.vue";
 import TypesFilterOptions from "./TypesFilterOptions.vue";
@@ -47,15 +47,55 @@ export default {
   data() {
     return {
       store,
+
+      filtredPokedex: [],
+
     };
   },
 
   methods: {
     onSearchClick() {
-      this.store.activeFilters= {...this.store.filterOptions}
 
-      fetchPokemonsList()
+      this.store.activeFilters = { ...this.store.filterOptions }
 
+      //se il filtro attivo contiente delle condizioni
+      if (this.store.activeFilters) {
+        //reset
+        this.filtredPokedex = []
+
+        //ciclo sui pokemon del pokedex
+        this.store.pokedex.forEach((pokemon) => {
+
+          let checkPokemonincludedByType = false
+
+          function filterByType() {
+            pokemon.types.forEach (type =>{
+              if (store.activeFilters.types.includes(type.type.name)||
+              store.activeFilters.types.length===0) {
+                //console.log("true")
+                checkPokemonincludedByType = true
+              }
+            });
+          }
+
+          /* FILTRO */
+          if (pokemon.id.toString().includes(this.store.activeFilters.id.toString()) &&
+            pokemon.name.includes(this.store.activeFilters.name.toLowerCase())) {
+
+            console.log(pokemon.name, pokemon.id)
+            filterByType()
+
+            console.log(checkPokemonincludedByType)
+
+            if(checkPokemonincludedByType){
+              
+              this.filtredPokedex.push(pokemon)
+            }              
+          }
+
+        })
+        return this.store.pokedex = this.filtredPokedex
+      }
     }
   }
 }
@@ -119,6 +159,7 @@ form {
         color: rgb(210, 255, 138);
       }
     }
+
     .search-btn {
 
       &.active {
