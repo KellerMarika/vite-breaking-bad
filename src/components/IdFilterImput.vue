@@ -5,8 +5,8 @@
       for="id"
 
       :class="store.searchByIdIsActive ? 'active' : ''"
-      @click="store.searchByIdIsActive ? (store.searchByIdIsActive = false , store.filters.id='') : store.searchByIdIsActive = true">id
-    <input class="position-absolute start-0 opacity-0" type="number" name="id" id="id" v-model="store.filters.id">
+      @click="store.searchByIdIsActive ? (store.searchByIdIsActive = false , store.filterOptions.id='') : store.searchByIdIsActive = true">id
+    <input class="position-absolute start-0 opacity-0" type="number" name="id" id="id" v-model="store.filterOptions.id">
   </label>
 </template>
 

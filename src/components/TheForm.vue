@@ -1,6 +1,6 @@
 <template>
 
-  <form class="form-container position-relative m-5" action="get">
+  <form class="form-container position-relative m-5" action="get" @submit.prevent="onSearchClick">
 
 
     <div class="thumbs-container w-100 row m-0">
@@ -24,7 +24,8 @@
       </template>
 
       <button type="button"
-          class=" submit search-btn thumb col fw-bold d-block position-relative d-flex justify-content-center align-items-center text-uppercase">
+          class=" submit search-btn thumb col fw-bold d-block position-relative d-flex justify-content-center align-items-center text-uppercase"
+          @click="onSearchClick">
         Search
       </button>
 
@@ -34,7 +35,7 @@
 </template>
   
 <script>
-import { store, fetchPokemonsList } from "../store/store";
+import { store, fetchPokemonsList} from "../store/store";
 import NameFilterImput from "./NameFilterImput.vue";
 import IdFilterImput from "./IdFilterImput.vue";
 import TypesFilterOptions from "./TypesFilterOptions.vue";
@@ -42,9 +43,7 @@ import TypesFilterOptions from "./TypesFilterOptions.vue";
 export default {
 
   components: { TypesFilterOptions, NameFilterImput, IdFilterImput },
-  props: {
 
-  },
   data() {
     return {
       store,
@@ -52,8 +51,14 @@ export default {
   },
 
   methods: {
+    onSearchClick() {
+      this.store.activeFilters= {...this.store.filterOptions}
+
+      fetchPokemonsList()
+
+    }
   }
-};
+}
 </script>
   
 <style scoped lang="scss">
@@ -82,14 +87,12 @@ export default {
   border-bottom-right-radius: 60px 60px;
 }
 
-
 form {
   .thumbs-container {
     width: 720;
     border-radius: 100%;
     z-index: 2;
     background-color: rgb(17, 62, 129);
-
 
     .thumb {
 
@@ -116,7 +119,6 @@ form {
         color: rgb(210, 255, 138);
       }
     }
-
     .search-btn {
 
       &.active {

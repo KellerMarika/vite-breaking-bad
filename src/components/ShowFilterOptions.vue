@@ -9,7 +9,7 @@
       <span class="fw-bold" v-show="(store.searchByIdIsActive)">
         <i class="fa-solid fa-caret-right"></i>
         By id: </span>
-      <span class="id px-1">{{store.searchByIdIsActive ? store.filters.id : ''}}</span>
+      <span class="id px-1">{{store.searchByIdIsActive ? store.filterOptions.id : ''}}</span>
     </div>
 
 
@@ -19,18 +19,18 @@
       <span class="fw-bold" >
         <i class="fa-solid fa-caret-right"></i>
         By Name: </span>
-      <span class="name px-1">{{store.filters.name}}</span>
+      <span class="name px-1">{{store.filterOptions.name}}</span>
     </div>
 
    <!-- types -->
     <!-- prende le prop da store -->
     <div class="types-search  d-flex flex-wrap">
 
-<span class="fw-bold pe-2" v-show="(store.filters.types.length > 0)">
+<span class="fw-bold pe-2" v-show="(store.filterOptions.types.length > 0)">
   <i class="fa-solid fa-caret-right"></i>
   By Type: </span>
 
-<template v-for="(typeChose, i) in store.filters.types">
+<template v-for="(typeChose, i) in store.filterOptions.types">
 
   <div v-if="(i === 0)" class="type ps-1">{{ typeChose }}</div>
   <div v-else> <span class="type px-1">, </span>{{ typeChose }}</div>

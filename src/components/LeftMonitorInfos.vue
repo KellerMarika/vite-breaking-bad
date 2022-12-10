@@ -3,23 +3,24 @@
   <div id="monitor-infos" class=" position-relative rounded-4 m-5">
 
     <!-- componente pokemon Infos -->
-    <ShowFilterOptions></ShowFilterOptions>
+    <ShowPokemonInfo></ShowPokemonInfo>
 
     <!-- componente form Infos -->
-    
 
+    <ShowFilterOptions></ShowFilterOptions>
   </div>
 
 </template>
   
 <script>
 import ShowFilterOptions from './ShowFilterOptions.vue';
+import ShowPokemonInfo from './ShowPokemonInfo.vue';
 export default {
     props: {},
     data() {
         return {};
     },
-    components: { ShowFilterOptions }
+    components: { ShowFilterOptions, ShowPokemonInfo }
 };
 </script>
   

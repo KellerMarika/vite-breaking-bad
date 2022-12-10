@@ -4,38 +4,37 @@ import axios from "axios";
 export const store = reactive({
   pokemonsList: [],
   pokedex: [],
+  filtredPokedex: [],
   pokemonsTypesList: [
     "dark",
   ],
-  searchByIdIsActive:false,
-  searchByNameIsActive:false,
+  searchByIdIsActive: false,
+  searchByNameIsActive: false,
 
   //oggetto del filtro
-  filters: {
+  filterOptions: {
     name: "",
     id: "",
-    types: [ ],
-  }
+    types: [],
+  },
+  activeFilters: null,
 });
 
-/* FUNZIONE POPOLA POKEDEX (LISTA POKEMON) */
+/* funzione genera intero pokedex */
 export function fetchPokemonsList() {
+
 
   axios.get("https://pokeapi.co/api/v2/pokemon?limit=151")
     .then((resp) => {
 
       /* array dei pokemon */
       store.pokemonsList = resp.data.results
-      //console.log("pokemonsList", store.pokemonsList)
-      //console.log("pokemonsList", store.pokemonsList[0].url)
-
 
       /* array di oggetti contenenti i dati di ciascun pokemon */
       store.pokemonsList.forEach(pokemon => {
         axios.get(pokemon.url)
           .then((resp) => {
-            //console.log("resp.data: ", resp.data)
-
+            store.pokedex.push(resp.data)
 
             /* CICLO COLLEZIONA TIPO */
             resp.data.types.forEach(type => {
@@ -44,20 +43,32 @@ export function fetchPokemonsList() {
                 //console.log(store.pokemonsTypesList)
               }
             })
-
-            store.pokedex.push(resp.data)
-            //console.log(store.pokedex)
-
-
           });
       });
 
     });
-};
 
+  /* problema col then il filtro funziona, ma dopo aggiunge comunque tutte le cards e voglio morire */
 
+  if (store.activeFilters && store.pokedex.length === 151) {
 
+    store.pokedex.forEach((pokemon) => {
+      //console.log(pokemon.name, pokemon.id)
+      //pokemon.types.forEach((type) => console.log(type.type.name));
 
+      if (pokemon.id.toString().includes(store.activeFilters.id.toString()) &&
+        pokemon.name.includes(store.activeFilters.name.toLowerCase())
+        /* && pokemon.types.some(type => type.type.name === "grass") */
+      ) {
+        store.filtredPokedex.push(pokemon)
+        console.log()
+        console.log(pokemon.name, store.activeFilters.name, pokemon.id, store.activeFilters.id)
 
+      }
+
+    })
+    return store.pokedex = store.filtredPokedex
+  }
+}
 
 
