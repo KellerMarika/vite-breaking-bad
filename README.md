@@ -19,12 +19,8 @@ POKEMONS LIST:
 6)vorrrei setActiveCard by @scroll all'interno del contenitore _______________how?
 
 POKEMONINFO:
-7)mostrare la current active card nel component PokemonInfos.
+
 8)creare dei pulsanti a lato del pokemonInfos per permettere di mostrare diverse schermate informative relative al current active card
-
-FORM
-
-10)quando clicco su un qualsiasi pusante del filtro active card diventa -1 e nascondo i contenuto di Pokemon infos 
 
 
 bonus:

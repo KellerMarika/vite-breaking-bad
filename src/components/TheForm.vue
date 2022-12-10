@@ -3,7 +3,7 @@
   <form class="form-container position-relative m-5" action="get" @submit.prevent="onSearchClick">
 
 
-    <div class="thumbs-container w-100 row m-0">
+    <div class="thumbs-container w-100 row m-0" @click="this.store.toShow='filters'">
 
       <NameFilterImput class="col name search-btn thumb "></NameFilterImput>
 
