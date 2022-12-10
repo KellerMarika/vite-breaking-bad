@@ -3,6 +3,7 @@ import axios from "axios";
 
 export const store = reactive({
   pokemonsList: [],
+  pokedexAllPokemons: [],
   pokedex: [],
   pokemonsTypesList: [
     "dark",
@@ -33,7 +34,7 @@ export function fetchPokemonsList() {
       store.pokemonsList.forEach(pokemon => {
         axios.get(pokemon.url)
           .then((resp) => {
-            store.pokedex.push(resp.data)
+            store.pokedexAllPokemons.push(resp.data)
 
             /* CICLO COLLEZIONA TIPO */
             resp.data.types.forEach(type => {
@@ -41,14 +42,15 @@ export function fetchPokemonsList() {
                 store.pokemonsTypesList.push(type.type.name)
                 //console.log(store.pokemonsTypesList)
               }
+
             })
           });
       });
-
+      store.pokedex = store.pokedexAllPokemons
     });
   /* ____________________________________________________________ */
 
-  
+
 }
 
 

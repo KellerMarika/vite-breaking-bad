@@ -47,8 +47,7 @@ export default {
   data() {
     return {
       store,
-
-      filtredPokedex: [],
+      pokedexFiltered: [],
 
     };
   },
@@ -61,7 +60,8 @@ export default {
       //se il filtro attivo contiente delle condizioni
       if (this.store.activeFilters) {
         //reset
-        this.filtredPokedex = []
+        this.store.pokedex=this.store.pokedexAllPokemons
+        this.pokedexFiltered = []
 
         //ciclo sui pokemon del pokedex
         this.store.pokedex.forEach((pokemon) => {
@@ -88,13 +88,13 @@ export default {
             console.log(checkPokemonincludedByType)
 
             if(checkPokemonincludedByType){
-              
-              this.filtredPokedex.push(pokemon)
+
+              this.pokedexFiltered.push(pokemon)
             }              
           }
 
         })
-        return this.store.pokedex = this.filtredPokedex
+        return this.store.pokedex = this.pokedexFiltered
       }
     }
   }
