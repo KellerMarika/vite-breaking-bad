@@ -35,7 +35,7 @@
 </template>
   
 <script>
-import { store, fetchPokemonsList } from "../store/store";
+import { store} from "../store/store";
 import NameFilterImput from "./NameFilterImput.vue";
 import IdFilterImput from "./IdFilterImput.vue";
 import TypesFilterOptions from "./TypesFilterOptions.vue";
@@ -45,6 +45,7 @@ export default {
   components: { TypesFilterOptions, NameFilterImput, IdFilterImput },
 
   data() {
+
     return {
       store,
       pokedexFiltered: [],
@@ -53,6 +54,7 @@ export default {
   },
 
   methods: {
+
     onSearchClick() {
       
         this.store.activeFilters = { ...this.store.filterOptions }

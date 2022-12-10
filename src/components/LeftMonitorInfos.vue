@@ -2,26 +2,20 @@
 
   <div id="monitor-infos" class=" position-relative rounded-4 m-5">
 
-
-    <!-- componente form Infos -->
-
     <ShowFilterOptions
-        v-if="toShow == 'filter'" />
+        v-if="store.toShow === 'filters'" />
 
-    <!-- componente pokemon Infos -->
-    <ShowPokemonInfo
-        v-else
-        :pokemonToShow="PokemonInfosSubject" />
-
+    <ShowPokemonInfo 
+    :pokemonToShow="PokemonInfosSubject"
+    v-else />
 
   </div>
-
 </template>
   
 <script>
-import { stringifyExpression } from '@vue/compiler-core';
 import ShowFilterOptions from './ShowFilterOptions.vue';
 import ShowPokemonInfo from './ShowPokemonInfo.vue';
+import { store } from "../store/store";
 export default {
   props: {
     /**
@@ -47,19 +41,14 @@ export default {
      * oggetto che rappresenta un singolo pokemon:
      */
     PokemonInfosSubject: {
-      //specifico che tipologia è la prop che passo e se è essenziale (controllo in console)
       type: Object,
       required: true
     },
-
-    toShow: {
-      type: String,
-      required: true
-
-    }
   },
   data() {
-    return {};
+    return {
+      store
+    };
   },
   components: { ShowFilterOptions, ShowPokemonInfo }
 };

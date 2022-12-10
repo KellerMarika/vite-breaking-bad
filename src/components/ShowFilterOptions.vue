@@ -54,9 +54,6 @@
 <script>
 import { store } from "../store/store";
 export default {
-  props: {
-
-  },
   data() {
     return {
       store

@@ -9,17 +9,17 @@
         <h3 class="name flex-fill text-capitalize fw-bold">{{ pokemon.name }}</h3>
         <!--     <div>{{`${this.fetchPokemonImg(pokemon.sprites.other.official-artwork.front_default)}`}}</div> -->
 
-        <i class="fs-4 m-2 fa-star" 
+        <!-- star icon -->
+        <i class="fs-4 m-2 fa-star"
             @click="isFavorite ? isFavorite = false : isFavorite = true"
             :class="(isFavorite ? 'fa-solid' : 'fa-regular')"> </i>
 
-
+        <!-- check icon -->
         <i class="fs-4 m-2 fa-regular"
             @click="isCaught ? isCaught = false : isCaught = true"
             :class="(isCaught ? 'fa-circle-check' : 'fa-circle')"></i>
-
-
       </div>
+
 
       <div class="type row gap-4 mx-5 mt-2 justify-content-between ">
         <div class="col text-uppercase rounded-3 fs-5"
@@ -31,9 +31,7 @@
     <div class="img-card-container">
       <img class="img-fluid" :src="pokemon.sprites.other['official-artwork'].front_default" :alt="pokemon.name">
     </div>
-
   </div>
-
 </template>
 
 <script>
@@ -72,8 +70,8 @@ export default {
   data() {
     return {
       store,
-      isFavorite:false,
-      isCaught: false 
+      isFavorite: false,
+      isCaught: false
 
 
     };
@@ -84,14 +82,9 @@ export default {
     addZero(n) {
       return (n < 10 ? '00' : n < 100 ? '0' : '') + n;
     },
-/*     computed: {
-      generateRandomBoolean() {
-        return Math.random() < 0.5
-      }
-    } */
   },
   mounted() {
-    
+
   }
 };
 </script>

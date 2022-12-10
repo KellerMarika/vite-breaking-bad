@@ -18,6 +18,7 @@ export const store = reactive({
     types: [],
     activeFilters: null,
   },
+  toShow: "filters",
 });
 
 /* funzione genera intero pokedex */

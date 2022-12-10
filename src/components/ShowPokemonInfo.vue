@@ -1,11 +1,11 @@
 <template>
-<div>{{this.pokemonToShow.id}}</div>
-
+  <div v-if="pokemonToShow">{{ pokemonToShow.name}}</div>
+<div v-else></div>
 
 </template>
 
 <script>
-import { store} from "../store/store";
+import { store } from "../store/store";
 export default {
   props: {
     /**
@@ -30,8 +30,7 @@ export default {
      * @param {array} past_types
      * oggetto che rappresenta un singolo pokemon:
      */
-    pokemonToShow: {
-      //specifico che tipologia è la prop che passo e se è essenziale (controllo in console)
+     pokemonToShow: {
       type: Object,
       required: true
     },
@@ -44,12 +43,11 @@ export default {
   },
 
   methods: {
-    }
   }
+}
 
 </script>
   
 <style scoped lang="scss">
-
 
 </style>

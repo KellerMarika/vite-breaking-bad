@@ -18,7 +18,6 @@
 
 
 							<LeftMonitorInfos
-									:toShow="monitorShow"
 									:PokemonInfosSubject="activeCard">
 								<!--ShowFilterOptions -->
 								<!-- PokemonInfos -->
@@ -56,23 +55,22 @@ import NavTop from './components/NavTop.vue';
 import LeftMonitorInfos from './components/LeftMonitorInfos.vue';
 import PokemonList from './components/PokemonList.vue';
 import TheForm from './components/TheForm.vue';
+import { store } from './store/store';
 
 
 export default {
 	components: { NavTop, NavBottom, PokemonList, LeftMonitorInfos, TheForm },
 	data() {
 		return {
+			store,
 			activeCard: null,
-			monitorShow: "filter"
-
 		}
 	},
 	methods: {
 		setActiveCard(clickedCard) {
 			//console.log("clicked",clickedCard)
 			this.activeCard = clickedCard
-			this.monitorShow= "info"
-
+			this.store.toShow="infos"
 			console.log("active", this.activeCard)
 		}
 	},
