@@ -1,40 +1,19 @@
-<template v-if="pokemonToShow" class="p-4">
+<template>
+  <!-- EVOLUTIONS -->
 
-  <div v-if="pokemonToShow"
-      :class="activePage"
-      class=" main-container h-100 p-4">
-
-
-
-    <PokemonDataInfos
-        :pokemonToShow="pokemonToShow" />
-    <PokemonStatInfos
-        :pokemonToShow="pokemonToShow" />
-
-    <PokemonEvoIutionInfos
-        :pokemonToShow="pokemonToShow" />
-
-
-    <div class="loalization"></div>
-
-
-
-
-
-
+  <div class="Evolutions h-100">
+    <div class="row h-100">
+      <div class="col"></div>
+    </div>
 
   </div>
-  <div v-else></div>
+
 
 </template>
-
+ 
 <script>
-import PokemonDataInfos from "./PokemonDataInfos.vue";
-import PokemonStatInfos from "./PokemonStatInfos.vue";
-import PokemonEvoIutionInfos from "./PokemonEvoIutionInfos.vue"
 import { store } from "../store/store";
 export default {
-  components: { PokemonDataInfos, PokemonStatInfos, PokemonEvoIutionInfos },
   props: {
     /**
      * parametri dell'oggetto pokemon
@@ -98,21 +77,9 @@ export default {
 }
 
 </script>
-  
+ 
 <style scoped lang="scss">
-* {
-  border: 1px solid blue;
-}
-
 .main-container {
   border: 2px solid salmon;
-}
-.img-container {
-  height: 60%;
-
-  img {
-    height: 110%;
-    max-height: 100%;
-  }
 }
 </style>

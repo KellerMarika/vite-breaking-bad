@@ -31,6 +31,7 @@ export default {
   data() {
     return {
       store,
+      evolutions: [],
     };
   },
   created() {
@@ -42,23 +43,78 @@ export default {
 
 
       this.$emit("toActiveCard", clickedPokemonCard)
-      this.getpokemonEvolution(clickedPokemonCard)
+      // this.getNextEvolution(clickedPokemonCard)
+      //this.getPrevEvolution(clickedPokemonCard)
+
+      this.getEvo(clickedPokemonCard)
     },
 
-    /* FUNZIONE RECUPERA EVOLUZIONI */
-    getpokemonEvolution(URL) {
+    getEvo(URL) {
+      axios.get(URL.species.url)
+        .then((resp) => {
+          //console.log(resp.data)
+         // console.log(resp.data.evolution_chain)
+          let evolutionChain_Url = resp.data.evolution_chain.url
+
+          axios.get(evolutionChain_Url)
+            .then((resp) => {
+
+            })
+
+        })
+
+    },
 
 
-      let evolutions = []
+    /* FUNZIONE RECUPERA PRECEDENTI EVOLUZIONI */
+    getPrevEvolution(URL) {
+
+      axios.get(URL.species.url)
+        .then((resp) => {
+
+
+          console.log("BASE", resp.data)
+          console.log("SI EVOLVE DA", resp.data.evolves_from_species)
+
+          if (resp.data.evolves_from_species &&
+            !this.evolutions.includes(resp.data.evolves_from_species)) {
+
+            this.evolutions.push(resp.data.evolves_from_species)
+            console.log("this.evolutions", this.evolutions)
+          }
+
+        })
+
+    },
+
+    /* FUNZIONE RECUPERA SUCCESSIVE EVOLUZIONI */
+    getNextEvolution(URL) {
+
+
+      this.evolutions = []
 
 
 
       axios.get(URL.species.url)
         .then((resp) => {
-          let evolutionChain_Url = resp.data.evolution_chain.url
 
+
+          /*  console.log("BASE", resp.data)
+           console.log("SI EVOLVE DA", resp.data.evolves_from_species)
+ 
+           if (resp.data.evolves_from_species &&
+             !this.evolutions.includes(resp.data.evolves_from_species)) {
+ 
+             this.evolutions.push(resp.data.evolves_from_species)
+             console.log("this.evolutions", this.evolutions)
+           }
+  */
+
+          let evolutionChain_Url = resp.data.evolution_chain.url
           axios.get(evolutionChain_Url)
             .then((resp) => {
+
+
 
               resp.data.chain.evolves_to.forEach(first => {
 
@@ -66,20 +122,22 @@ export default {
 
                 console.log("PRIMA EVOLUZIONE", first.species)
 
-                if (first.species) {
+                if (first.species &&
+                  !this.evolutions.includes(resp.data.evolves_from_species)) {
 
-                  evolutions.push(first.species)
-                  console.log("evolutions", evolutions)
+                  this.evolutions.push(first.species)
+                  console.log("this.evolutions", this.evolutions)
                 }
 
                 // console.log(first.evolves_to)
                 first.evolves_to.forEach(second => {
                   console.log("SECONDA EVOLUZIONE", second.species)
 
-                  if (second.species) {
+                  if (second.species &&
+                    !this.evolutions.includes(resp.data.evolves_from_species)) {
 
-                    evolutions.push(second.species)
-                    console.log("evolutions", evolutions)
+                    this.evolutions.push(second.species)
+                    console.log("this.evolutions", this.evolutions)
                   }
                 })
 

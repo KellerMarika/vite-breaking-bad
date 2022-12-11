@@ -4,11 +4,15 @@
     <div class="col-3">
 
       <div class="info-controls-container mt-5 me-2">
-        <button class="thumb rounded-2 fw-bold text-capitalize p-2 my-3 d-block w-100" type="button">data</button>
-        <button class="thumb rounded-2 fw-bold text-capitalize p-2 my-3 d-block w-100" type="button">stat</button>
-        <button class="thumb rounded-2 fw-bold text-capitalize p-2 my-3 d-block w-100" type="button">evolutions</button>
-        <button class="thumb rounded-2 fw-bold text-capitalize p-2 my-3 d-block w-100" type="button">were to find</button>
+        <label
+            class="thumb rounded-2 fw-bold text-capitalize p-2 my-3 d-block w-100 text-center"
+            v-for="page in pages"
+            @click="activePage = page">{{ page }}
 
+
+          <input class="position-absolute visually-hidden" type="radio" name="active-page" id="active-page"
+              :value="page">
+        </label>
 
       </div>
 
@@ -17,10 +21,12 @@
     <div id="monitor-infos" class=" col-9 rounded-4">
 
       <ShowPokemonInfo
-      :pokemonToShow="PokemonInfosSubject"
+          :pages="pages"
+          :pokemonToShow="PokemonInfosSubject"
+          :activePage="activePage"
           v-if="store.toShow === 'infos'" />
 
-      <ShowFilterOptions      
+      <ShowFilterOptions
           v-else />
 
     </div>
@@ -32,6 +38,8 @@ import ShowFilterOptions from './ShowFilterOptions.vue';
 import ShowPokemonInfo from './ShowPokemonInfo.vue';
 import { store } from "../store/store";
 export default {
+
+  components: { ShowFilterOptions, ShowPokemonInfo },
   props: {
     /**
      * parametri dell'oggetto pokemon
@@ -62,10 +70,19 @@ export default {
   },
   data() {
     return {
-      store
-    };
+      store,
+      pages: [
+        "data",
+        "stat",
+        "evolutions",
+        "map"
+      ],
+      activePage: ""
+    }
   },
-  components: { ShowFilterOptions, ShowPokemonInfo }
+  mounted() {
+    console.log(this.pages)
+  }
 };
 </script>
   
