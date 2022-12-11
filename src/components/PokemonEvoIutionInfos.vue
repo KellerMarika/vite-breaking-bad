@@ -1,7 +1,7 @@
 <template>
   <!-- EVOLUTIONS -->
 
-  <div class="Evolutions h-100">
+  <div class="h-100">
     <div class="row h-100">
       <div class="col"></div>
     </div>
@@ -40,21 +40,6 @@ export default {
     pokemonToShow: {
       type: Object,
       required: true
-    },
-    /**
-    * contiene il nome della pagina da attivare
-    */
-    activePage: {
-      type: String,
-      required: true,
-    },
-
-    /**
-    * contiene un array coi nomi delle pagine
-    */
-    activePage: {
-      type: Array,
-      required: true,
     },
   },
   data() {

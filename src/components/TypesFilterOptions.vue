@@ -1,6 +1,5 @@
 <template>
  
-
   <img v-if="(!store.filterOptions.types.includes(type))" :src="`/${type}.png`" :alt="type" class="img-fluid">
   <img v-else :src="`/${type}-active.png`" :alt="type" class="img-fluid">
 

@@ -1,41 +1,41 @@
 <template>
 
-  <form class="form-container position-relative m-5" action="get" @submit.prevent="onSearchClick">
+  <legend class="filter-controls-legend  ms-5 pb-1">Filters</legend>
+  <fieldset class="filter-controls-container rounded-4  my-4 mx-5 px-4 pt-2">
+    <form class="form-container position-relative m-2 " action="get" @submit.prevent="onSearchClick">
+      <div class="thumbs-container w-100 row m-0" @click="this.store.toShow = 'filters'">
+
+        <NameFilterImput class="col name search-btn thumb "></NameFilterImput>
+
+        <template
+            v-for="(type, i) in store.pokemonsTypesList">
 
 
-    <div class="thumbs-container w-100 row m-0" @click="this.store.toShow='filters'">
+          <label
+              class="col type thumb  d-flex position-relative rounded-2 d-flex justify-content-center align-items-center"
+              :for="type">
 
-      <NameFilterImput class="col name search-btn thumb "></NameFilterImput>
+            <TypesFilterOptions :key="type" :type="type"></TypesFilterOptions>
+          </label>
 
-      <template
-          v-for="(type, i) in store.pokemonsTypesList">
+          <IdFilterImput class="col id search-btn thumb " v-if="(i === (this.store.pokemonsTypesList.length + 2) / 2)">
+          </IdFilterImput>
 
+        </template>
 
-        <label
-            class="col type thumb  d-flex position-relative rounded-2 d-flex justify-content-center align-items-center"
-            :for="type">
+        <button type="button"
+            class=" submit search-btn thumb col fw-bold d-block position-relative d-flex justify-content-center align-items-center text-uppercase"
+            @click="onSearchClick">
+          Search
+        </button>
 
-          <TypesFilterOptions :key="type" :type="type"></TypesFilterOptions>
-        </label>
-
-        <IdFilterImput class="col id search-btn thumb " v-if="(i === (this.store.pokemonsTypesList.length + 2) / 2)">
-        </IdFilterImput>
-
-      </template>
-
-      <button type="button"
-          class=" submit search-btn thumb col fw-bold d-block position-relative d-flex justify-content-center align-items-center text-uppercase"
-          @click="onSearchClick">
-        Search
-      </button>
-
-    </div>
-  </form>
-
+      </div>
+    </form>
+  </fieldset>
 </template>
   
 <script>
-import { store} from "../store/store";
+import { store } from "../store/store";
 import NameFilterImput from "./NameFilterImput.vue";
 import IdFilterImput from "./IdFilterImput.vue";
 import TypesFilterOptions from "./TypesFilterOptions.vue";
@@ -56,8 +56,8 @@ export default {
   methods: {
 
     onSearchClick() {
-      
-        this.store.activeFilters = { ...this.store.filterOptions }
+
+      this.store.activeFilters = { ...this.store.filterOptions }
 
       //se il filtro attivo contiente delle condizioni
       if (this.store.activeFilters) {
@@ -101,6 +101,16 @@ export default {
   
 <style scoped lang="scss">
 @use "../styles/partials/variables" as *;
+
+.filter-controls-legend {
+  transform: translateY(10px) translateX(10px);
+  color: rgb(189, 43, 121);
+  text-shadow: 1px 1px 0px rgb(97, 6, 53);
+}
+
+fieldset {
+  border: 2px inset rgba(238, 89, 168, 0.699);
+}
 
 .type.thumb {
   aspect-ratio: 1/1;

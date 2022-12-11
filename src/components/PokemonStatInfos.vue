@@ -1,9 +1,8 @@
 <template>
 
- <!--  STAT-->
- <div class="stat text-center h-100 d-flex flex-row-reverse pt-3">
-      <!-- ______________________________________D-none -->
 
+ <!--  STAT-->
+ <div class="text-center h-100 d-flex flex-row-reverse pt-3">
 
       <!-- img -->
       <div class="img-container mt-5 me-4">
@@ -59,21 +58,6 @@ props: {
     type: Object,
     required: true
   },
-  /**
-  * contiene il nome della pagina da attivare
-  */
-  activePage: {
-    type: String,
-    required: true,
-  },
-
-  /**
-  * contiene un array coi nomi delle pagine
-  */
-  activePage: {
-    type: Array,
-    required: true,
-  },
 },
 data() {
   return {
@@ -97,9 +81,6 @@ mounted() {
 </script>
 
 <style scoped lang="scss">
-.main-container {
-  border: 2px solid salmon;
-}
 
 .img-container {
   height: 60%;
