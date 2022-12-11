@@ -23,7 +23,7 @@
 <script>
 import PokeCard from './PokeCard.vue';
 import { store, fetchPokemonsList } from "../store/store";
-
+import axios from 'axios';
 
 export default {
 
@@ -40,9 +40,53 @@ export default {
   methods: {
     onClick(clickedPokemonCard) {
 
-      this.$emit("toActiveCard",clickedPokemonCard)
 
-    }
+      this.$emit("toActiveCard", clickedPokemonCard)
+      this.getpokemonEvolution(clickedPokemonCard)
+    },
+
+    /* FUNZIONE RECUPERA EVOLUZIONI */
+    getpokemonEvolution(URL) {
+
+
+      let evolutions = []
+
+
+
+      axios.get(URL.species.url)
+        .then((resp) => {
+          let evolutionChain_Url = resp.data.evolution_chain.url
+
+          axios.get(evolutionChain_Url)
+            .then((resp) => {
+
+              resp.data.chain.evolves_to.forEach(first => {
+
+
+
+                console.log("PRIMA EVOLUZIONE", first.species)
+
+                if (first.species) {
+
+                  evolutions.push(first.species)
+                  console.log("evolutions", evolutions)
+                }
+
+                // console.log(first.evolves_to)
+                first.evolves_to.forEach(second => {
+                  console.log("SECONDA EVOLUZIONE", second.species)
+
+                  if (second.species) {
+
+                    evolutions.push(second.species)
+                    console.log("evolutions", evolutions)
+                  }
+                })
+
+              });
+            })
+        })
+    },
   },
   mounted() {
 

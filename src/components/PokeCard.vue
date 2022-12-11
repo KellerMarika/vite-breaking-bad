@@ -77,6 +77,7 @@ export default {
     };
   },
   methods: {
+    
 
     /* FUNZIONE FORMATA NUMERI A 3 CIFRE (001|010|100) */
     addZero(n) {

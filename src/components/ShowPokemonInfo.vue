@@ -60,7 +60,7 @@
 
 
     <!--  STAT-->
-    <div class="stat text-center h-100 d-flex flex-row-reverse pt-3">
+    <div class="stat text-center h-100 d-flex flex-row-reverse pt-3 d-none">
       <!-- ______________________________________D-none -->
 
 
@@ -92,7 +92,9 @@
     <!-- EVOLUTIONS -->
 
     <div class="Evolutions h-100">
-
+      <div class="row h-100">
+        <div class="col"></div>
+      </div>
 
     </div>
 
@@ -109,6 +111,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { store } from "../store/store";
 export default {
   props: {
@@ -145,36 +148,37 @@ export default {
       dataImg: {
         front: true,
         shiny: false
+      },
 
-
-      }
 
     };
   },
 
   methods: {
+  },
+  mounted() {
+
   }
 }
 
 </script>
   
 <style scoped lang="scss">
-/* * {
+* {
   border: 1px solid blue;
-} */
+}
 
 .main-container {
   border: 2px solid salmon;
 }
 
 
-  .img-container {
-    height: 60%;
+.img-container {
+  height: 60%;
 
-    img {
-      height: 110%;
-      max-height: 100%;
-    }
+  img {
+    height: 110%;
+    max-height: 100%;
   }
-
+}
 </style>

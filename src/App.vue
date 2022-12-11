@@ -71,7 +71,6 @@ export default {
 			//console.log("clicked",clickedCard)
 			this.activeCard = clickedCard
 			this.store.toShow="infos"
-			console.log("active", this.activeCard)
 		}
 	},
 }
