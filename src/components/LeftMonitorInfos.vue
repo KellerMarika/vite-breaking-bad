@@ -201,6 +201,7 @@ fieldset {
   background-color: rgb(87, 143, 228);
   box-shadow: -5px -2px 5px 1px inset rgb(87, 114, 231);
   flex-grow: 0;
+  overflow: hidden;
 
   &:hover {
     border-width: 3px 3px 3px 3px;

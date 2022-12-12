@@ -26,12 +26,18 @@ import { store, fetchPokemonsList } from "../store/store";
 import axios from 'axios';
 
 export default {
-
   components: { PokeCard },
   data() {
     return {
       store,
-      evolutions: [],
+      evolutionsChain: [
+
+      ],
+      pokemonChain: {
+        name: undefined,
+        url: undefined,
+        evolveBy: undefined
+      }
     };
   },
   created() {
@@ -40,107 +46,83 @@ export default {
   },
   methods: {
     onClick(clickedPokemonCard) {
-
-
       this.$emit("toActiveCard", clickedPokemonCard)
-      // this.getNextEvolution(clickedPokemonCard)
-      //this.getPrevEvolution(clickedPokemonCard)
-
-      this.getEvo(clickedPokemonCard)
+      this.getEvo(clickedPokemonCard);
     },
 
+    /* FUNZIONE ESTRAPOLA POKEMON */
     getEvo(URL) {
-      axios.get(URL.species.url)
-        .then((resp) => {
-          //console.log(resp.data)
-         // console.log(resp.data.evolution_chain)
-          let evolutionChain_Url = resp.data.evolution_chain.url
-
-          axios.get(evolutionChain_Url)
-            .then((resp) => {
-
-            })
-
-        })
-
-    },
-
-
-    /* FUNZIONE RECUPERA PRECEDENTI EVOLUZIONI */
-    getPrevEvolution(URL) {
 
       axios.get(URL.species.url)
         .then((resp) => {
-
-
-          console.log("BASE", resp.data)
-          console.log("SI EVOLVE DA", resp.data.evolves_from_species)
-
-          if (resp.data.evolves_from_species &&
-            !this.evolutions.includes(resp.data.evolves_from_species)) {
-
-            this.evolutions.push(resp.data.evolves_from_species)
-            console.log("this.evolutions", this.evolutions)
-          }
-
-        })
-
-    },
-
-    /* FUNZIONE RECUPERA SUCCESSIVE EVOLUZIONI */
-    getNextEvolution(URL) {
-
-
-      this.evolutions = []
-
-
-
-      axios.get(URL.species.url)
-        .then((resp) => {
-
-
-          /*  console.log("BASE", resp.data)
-           console.log("SI EVOLVE DA", resp.data.evolves_from_species)
- 
-           if (resp.data.evolves_from_species &&
-             !this.evolutions.includes(resp.data.evolves_from_species)) {
- 
-             this.evolutions.push(resp.data.evolves_from_species)
-             console.log("this.evolutions", this.evolutions)
-           }
-  */
 
           let evolutionChain_Url = resp.data.evolution_chain.url
           axios.get(evolutionChain_Url)
             .then((resp) => {
 
+              // console.log("POKEMON Base", resp.data.chain.species.name, resp.data.chain.species.url) /* __________________________________ */
+              this.pokemonChain.name = resp.data.chain.species.name
+              this.pokemonChain.url = resp.data.chain.species.url
 
+              let firstChain = { ... this.pokemonChain }
+              this.evolutionsChain.push(firstChain);
 
-              resp.data.chain.evolves_to.forEach(first => {
+              this.pokemonChain = {
+                name: undefined,
+                url: undefined,
+                evolveBy: undefined
+              }
+              let firstEvolutionBreackpoint = resp.data.chain.evolves_to
 
+              //estrapolo prima evoluzione della specie 
+              firstEvolutionBreackpoint.forEach((evolutionBrach, i) => {
 
+                //console.log("PRIMA EVOLUZIONE", i, evolutionBrach.species.name, evolutionBrach.species.url)/* _______________________________ */
+                this.pokemonChain.name = evolutionBrach.species.name,
+                  this.pokemonChain.url = evolutionBrach.species.url,
 
-                console.log("PRIMA EVOLUZIONE", first.species)
+                  //ciclo sulle details delle evoluzioni del breackpoint 1
+                  evolutionBrach.evolution_details.forEach(evo_details => {
 
-                if (first.species &&
-                  !this.evolutions.includes(resp.data.evolves_from_species)) {
+                    //console.log("TIPO DI EVOLUZIONE", i, evo_details.trigger.name);
+                    this.pokemonChain.evolveBy = evo_details.trigger.name
 
-                  this.evolutions.push(first.species)
-                  console.log("this.evolutions", this.evolutions)
+                    let secondChain = { ... this.pokemonChain }
+                    this.evolutionsChain.push(secondChain);
+                    this.pokemonChain = {
+                      name: undefined,
+                      url: undefined,
+                      evolveBy: undefined
+                    }
+                  });
+
+                let secondEvolutionBreackpoint = evolutionBrach.evolves_to
+
+                if (secondEvolutionBreackpoint.length > 0) {
+                  secondEvolutionBreackpoint.forEach((evolutionBrach, i) => {
+
+                    //console.log("BRANCH", i, evolutionBrach)
+                    console.log("SECONDA EVOLUZIONE", i, evolutionBrach.species.name, evolutionBrach.species.url)
+                    this.pokemonChain.name = evolutionBrach.species.name,
+                      this.pokemonChain.url = evolutionBrach.species.url,
+
+                      //ciclo sulle details delle evoluzioni del breackpoint 1
+                      evolutionBrach.evolution_details.forEach(evo_details => {
+                        console.log("TIPO DI EVOLUZIONE", i, evo_details.trigger.name)/* __________________________________ */
+                        this.pokemonChain.evolveBy = evo_details.trigger.name
+
+                        let tirdChain = { ... this.pokemonChain }
+                        this.evolutionsChain.push(tirdChain);
+                        this.pokemonChain = {
+                          name: undefined,
+                          url: undefined,
+                          evolveBy: undefined
+                        }
+
+                      })
+                    console.log("ARRAY EVOLUIZIONI", this.evolutionsChain)
+                  });
                 }
-
-                // console.log(first.evolves_to)
-                first.evolves_to.forEach(second => {
-                  console.log("SECONDA EVOLUZIONE", second.species)
-
-                  if (second.species &&
-                    !this.evolutions.includes(resp.data.evolves_from_species)) {
-
-                    this.evolutions.push(second.species)
-                    console.log("this.evolutions", this.evolutions)
-                  }
-                })
-
               });
             })
         })

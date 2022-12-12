@@ -49,9 +49,6 @@ export function fetchPokemonsList() {
       });
       store.pokedex = store.pokedexAllPokemons
     });
-  /* ____________________________________________________________ */
-
-
 }
 
 
